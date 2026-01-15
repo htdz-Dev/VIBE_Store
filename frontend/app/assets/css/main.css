@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════
+   🔲 NEOBRUTALISM THEME - Bold, Raw, Unapologetic
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Neobrutalism Color Palette */
+  --color-bg: #fffef0;
+  --color-bg-alt: #fef6e0;
+  --color-surface: #ffffff;
+
+  --color-primary: #ff5c00;
+  --color-secondary: #7c3aed;
+  --color-accent-yellow: #facc15;
+  --color-accent-blue: #3b82f6;
+  --color-accent-green: #22c55e;
+  --color-accent-pink: #ec4899;
+
+  --color-text: #1a1a1a;
+  --color-text-muted: #525252;
+  --color-border: #1a1a1a;
+
+  --shadow-brutal: 4px 4px 0px #1a1a1a;
+  --shadow-brutal-lg: 6px 6px 0px #1a1a1a;
+  --shadow-brutal-xl: 8px 8px 0px #1a1a1a;
+}
+
+/* Base Styles */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+}
+
+/* Heading Font */
+h1,
+h2,
+h3,
+.font-display {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   🔲 BRUTAL COMPONENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Buttons */
+.btn {
+  @apply px-6 py-3 font-bold transition-all duration-150;
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 3px solid var(--color-border);
+  box-shadow: var(--shadow-brutal);
+}
+
+.btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #1a1a1a;
+}
+
+.btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #e65400;
+}
+
+.btn-secondary {
+  background-color: var(--color-accent-yellow);
+  color: var(--color-text);
+}
+
+.btn-secondary:hover {
+  background-color: #eab308;
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 3px solid transparent;
+  box-shadow: none;
+}
+
+.btn-ghost:hover {
+  background-color: var(--color-bg-alt);
+  transform: none;
+  box-shadow: none;
+}
+
+/* Cards */
+.card {
+  @apply overflow-hidden transition-all duration-150;
+  background: var(--color-surface);
+  border: 3px solid var(--color-border);
+  box-shadow: var(--shadow-brutal);
+}
+
+.card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-brutal-lg);
+}
+
+/* Inputs */
+.input {
+  @apply w-full px-4 py-3 transition-all duration-150;
+  background: var(--color-surface);
+  border: 3px solid var(--color-border);
+  color: var(--color-text);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: var(--shadow-brutal);
+  transform: translate(-2px, -2px);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Badges */
+.badge {
+  @apply inline-flex items-center px-3 py-1 text-xs font-bold uppercase;
+  font-family: 'Space Mono', monospace;
+  border: 2px solid var(--color-border);
+  letter-spacing: 0.05em;
+}
+
+.badge-accent {
+  background-color: var(--color-accent-yellow);
+  color: var(--color-text);
+}
+
+.badge-success {
+  background-color: var(--color-accent-green);
+  color: white;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   📦 LAYOUT UTILITIES
+   ═══════════════════════════════════════════════════════════════ */
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section {
+  @apply py-16 md:py-24;
+}
+
+/* Gradient Text - Brutalist style (just bold color) */
+.gradient-text {
+  color: var(--color-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   🎴 PRODUCT IMAGE CONTAINER
+   ═══════════════════════════════════════════════════════════════ */
+
+.product-image-container {
+  @apply relative overflow-hidden;
+  aspect-ratio: 3/4;
+  background: var(--color-bg-alt);
+  border-bottom: 3px solid var(--color-border);
+}
+
+.product-image-container img {
+  @apply w-full h-full object-cover transition-transform duration-300;
+}
+
+.product-image-container:hover img {
+  transform: scale(1.05);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ⏳ SKELETON LOADING
+   ═══════════════════════════════════════════════════════════════ */
+
+.skeleton {
+  background: linear-gradient(90deg,
+      var(--color-bg-alt) 0%,
+      var(--color-bg) 50%,
+      var(--color-bg-alt) 100%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  border: 2px solid var(--color-border);
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   📜 CUSTOM SCROLLBAR
+   ═══════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+  border-left: 3px solid var(--color-border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border: 2px solid var(--color-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   🎭 ANIMATIONS
+   ═══════════════════════════════════════════════════════════════ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-brutal {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-bounce-brutal {
+  animation: bounce-brutal 0.5s ease-in-out;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   🔲 BRUTALIST DECORATIONS
+   ═══════════════════════════════════════════════════════════════ */
+
+.brutal-border {
+  border: 3px solid var(--color-border);
+}
+
+.brutal-shadow {
+  box-shadow: var(--shadow-brutal);
+}
+
+.brutal-shadow-lg {
+  box-shadow: var(--shadow-brutal-lg);
+}
+
+.brutal-shadow-xl {
+  box-shadow: var(--shadow-brutal-xl);
+}
+
+/* Marquee text effect */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Sticker-like elements */
+.sticker {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--color-accent-yellow);
+  border: 3px solid var(--color-border);
+  box-shadow: var(--shadow-brutal);
+  transform: rotate(-2deg);
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+}
+
+.sticker-pink {
+  background: var(--color-accent-pink);
+  color: white;
+  transform: rotate(3deg);
+}
+
+.sticker-blue {
+  background: var(--color-accent-blue);
+  color: white;
+  transform: rotate(-1deg);
+}
+
+/* Pattern backgrounds */
+.pattern-dots {
+  background-image: radial-gradient(var(--color-border) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
+.pattern-grid {
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glass effect - Brutalist version */
+.glass {
+  background: rgba(255, 254, 240, 0.95);
+  border: 3px solid var(--color-border);
+  box-shadow: var(--shadow-brutal);
+}
