@@ -55,4 +55,4 @@ RUN a2enmod rewrite
 EXPOSE 80
 
 # 11. Start command
-CMD ["sh", "-c", "php artisan config:cache && php artisan route:cache && php artisan migrate --force && apache2-foreground"]
+CMD ["sh", "-c", "php artisan config:cache && php artisan route:cache && php artisan migrate --force && php artisan db:seed --force && apache2-foreground"]
