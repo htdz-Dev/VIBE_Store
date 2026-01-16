@@ -1,5 +1,5 @@
-# Use official PHP 8.2 with Apache
-FROM php:8.2-apache
+# Use official PHP 8.4 with Apache
+FROM php:8.4-apache
 
 # 1. Install system dependencies
 RUN apt-get update && apt-get install -y \
