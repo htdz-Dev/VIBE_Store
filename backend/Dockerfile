@@ -30,12 +30,15 @@ WORKDIR /var/www/html
 # 5. Copy application files
 COPY . .
 
-# 6. Create .env file with a temporary APP_KEY for build
+# 6. Create .env file from example
 RUN cp .env.example .env \
-    && echo "APP_KEY=base64:$(openssl rand -base64 32)" >> .env
+    && sed -i 's/APP_ENV=local/APP_ENV=production/' .env
 
 # 7. Install dependencies
 RUN COMPOSER_MEMORY_LIMIT=-1 composer install --no-dev --optimize-autoloader --prefer-dist --no-progress
+
+# 8. Generate APP_KEY for build (runtime will use Render's env var if set)
+RUN php artisan key:generate
 
 # 8. Set permissions
 RUN chown -R www-data:www-data \
@@ -54,5 +57,4 @@ RUN a2enmod rewrite
 # 10. Expose port 80
 EXPOSE 80
 
-# 11. Start command
-CMD ["sh", "-c", "php artisan config:cache && php artisan route:cache && php artisan migrate --force && php artisan db:seed --force && apache2-foreground"]
+CMD ["sh", "-c", "php artisan config:cache && php artisan route:cache && php artisan migrate --force && apache2-foreground"]
