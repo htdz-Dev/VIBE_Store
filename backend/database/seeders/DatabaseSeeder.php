@@ -23,13 +23,15 @@ class DatabaseSeeder extends Seeder
             File::makeDirectory(storage_path('app/public/products'), 0755, true);
         }
 
-        // Create admin user
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@vibe.com',
-            'password' => Hash::make('password'),
-            'is_admin' => true,
-        ]);
+        // Create admin user (only if doesn't exist)
+        User::firstOrCreate(
+            ['email' => 'admin@vibe.com'],
+            [
+                'name' => 'Admin',
+                'password' => Hash::make('password'),
+                'is_admin' => true,
+            ]
+        );
 
         // Create categories
         $hoodies = Category::create([
